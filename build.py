@@ -103,12 +103,19 @@ def loadTemplate(type, name):
 
 #set up the build directory
 def setupBuild():
+	print 'Begin environment setup'
+	extraFiles = ['readme.txt','license.txt']
 	subdirs = ['gfx','lang']
 	if not os.path.exists(buildPath):
 		os.makedirs(buildPath)
 		for s in subdirs:
 			os.makedirs(os.path.join(buildPath, s))
 			print 'created %s directory' % s
+	if not os.path.exists(releasePath):
+		os.makedirs(releasePath)
+	for ef in extraFiles:
+		os.system('cp %s %s' % (os.path.join(basePath, ef),releasePath))
+		print 'copied %s to release/' % ef
 
 #archive any existing builds before starting a new one
 def cleanup():
@@ -118,7 +125,28 @@ def cleanup():
 			print '  created archive directory'
 		build = str(getBuildNumber())
 		os.rename(buildPath, os.path.join(archivePath, build))
+		if os.path.exists(releasePath):
+				os.rename(releasePath,os.path.join(archivePath, build, 'release'))
 		print '  archived build %s' % build
+
+def release():
+	try:
+		os.chdir(buildPath)
+		os.system('nmlc ' +  name + '.nml')
+		newgrfFile = name + '.grf'
+		print 'compiled %s' % newgrfFile
+	except:
+		print 'error compiling'
+	else:
+		if os.path.isfile(newgrfFile):
+			os.system('cp %s %s' % (newgrfFile,newgrfPath)) # copy the compiled grf to the newgrf directory for testing
+			print 'copied %s to %s' % (newgrfFile,newgrfPath)
+			os.system('mv %s %s' % (newgrfFile,releasePath)) # move the compiled grf to the release directory
+			print 'moved %s to %s' % (newgrfFile,releasePath)
+			os.chdir(releasePath)
+			releaseFile = projectName + '.zip'
+			os.system('zip %s *' % releaseFile)
+			print 'SUCCESS!'
 
 #create the new build
 def newBuild():
@@ -132,16 +160,6 @@ def newBuild():
 	assembleNML(['core','cargo'])
 	writeNML(getIndustries())
 	writeNML(getVehicles())
-	try:
-		os.chdir(buildPath)
-		os.system('nmlc ' +  name + '.nml')
-		newgrfFile = name + '.grf'
-		print 'compiled %s' % newgrfFile
-	except:
-		print 'error compiling'
-	else:
-		if os.path.isfile(newgrfFile):
-			os.system('mv %s %s' % (newgrfFile,newgrfPath))
-			print 'copied %s to %s' % (newgrfFile,newgrfPath)
-			print 'SUCCESS!'
+	release()
+
 newBuild()

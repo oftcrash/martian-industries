@@ -6,11 +6,12 @@ import json
 from pprint import pprint
 from jinja2 import Environment, FileSystemLoader
 
-projectName = 'openttd-mars-industries'
-basePath = '/Users/knowltk/Documents/OpenTTD/'
-newgrfPath = os.path.join(basePath, 'newgrf')
-projectPath = os.path.join(basePath, 'NML', 'projects', projectName)
+projectName = 'martian-industries'
+basePath = os.getcwd()
+newgrfPath = os.path.join('/Users/knowltk/Documents/OpenTTD/', 'newgrf')
+projectPath = basePath
 buildPath = os.path.join(projectPath, 'build')
+releasePath = os.path.join(projectPath, 'release')
 sourcePath = os.path.join(projectPath, 'src')
 archivePath = os.path.join(projectPath, 'archive')
 buildCount = 'buildcount.txt'

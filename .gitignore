@@ -1,5 +1,6 @@
 .DS_Store
 parsetab.py
 *.pyc
+build/
 archive/
 release/
