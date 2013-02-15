@@ -1,0 +1,9 @@
+{% for tile in tiles %}
+item(FEAT_INDUSTRYTILES, industry_{{ abbr }}_tile_{{ tile }}, {{ tile }}) {
+	property {
+		substitute:					{{ tile }};
+		override:					{{ tile }};
+		accepted_cargos:			[{{ tile_cargos }}];
+	}
+}
+{% endfor %}

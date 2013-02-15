@@ -1,0 +1,35 @@
+/* {{ full }} */
+item(FEAT_INDUSTRIES, industry_{{ abbr }}, {{ number }}) {
+	{% if graphics %}
+	graphics {
+		{{ graphics }}
+	}
+	{% endif %}
+	property {
+		substitute: {{ number }};
+		override: {{ number }};
+		prod_cargo_types: [{{ prod_cargo_types }}];
+		accept_cargo_types: [{{ accept_cargo_types }}];
+		prod_multiplier: [{{ prod_multiplier }}];
+		min_cargo_distr: {{ min_cargo_distr }};
+		name: string(STR_IND_NAME_{{ abbr|upper }});
+		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_IND_NAME_{{ abbr|upper }}));
+		life_type: IND_LIFE_TYPE_{{ life_type }};
+		closure_msg: TTD_STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS;
+		prod_increase_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL;
+		prod_decrease_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL;
+		new_ind_msg: TTD_STR_NEWS_INDUSTRY_CONSTRUCTION;
+		random_sound_effects: [{{ random_sound_effects }}];
+		conflicting_ind_types: [{{ conflicting_ind_types }}];
+		input_multiplier_1: [{{ input_multiplier_1 }}];
+		input_multiplier_2: [{{ input_multiplier_2 }}];
+		input_multiplier_3: [{{ input_multiplier_3 }}];
+		spec_flags: bitmask({{ spec_flags }});
+		prob_random: {{ prob_random }};
+		prob_in_game: {{ prob_in_game }};
+		prospect_chance: {{ prospect_chance }};
+		fund_cost_multiplier: {{ fund_cost_multiplier }};
+		remove_cost_multiplier: {{ remove_cost_multiplier }};
+		{% if layouts %}layouts: [{% for l in layouts %}industry_{{ abbr }}_layout_{{ l }}{% if not loop.last %}, {% endif %}{% endfor %}];{% endif %}
+	}
+}

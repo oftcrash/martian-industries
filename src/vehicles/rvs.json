@@ -1,0 +1,38 @@
+{
+	"vehicle": {
+		"id": 58,
+		"name": "string(STR_RV_NAME_DIAT_1)",
+		"refittable_cargo_classes": "bitmask(CC_BULK, CC_POWDERIZED)",
+		"default_cargo_type": "DIAT"
+	},
+	"vehicle": {
+		"id": 59,
+		"name": "string(STR_RV_NAME_DIAT_2)",
+		"refittable_cargo_classes": "bitmask(CC_BULK, CC_POWDERIZED)",
+		"default_cargo_type": "DIAT"
+	},
+	"vehicle":{
+		"id": 60,
+		"name": "string(STR_RV_NAME_DIAT_3)",
+		"refittable_cargo_classes": "bitmask(CC_BULK, CC_POWDERIZED)",
+		"default_cargo_type": "DIAT"
+	},
+	"vehicle":{
+		"id": 67,
+		"name": "string(STR_RV_NAME_PLST_1)",
+		"refittable_cargo_classes": "bitmask(CC_BULK, CC_POWDERIZED)",
+		"default_cargo_type": "DIAT"
+	},
+	"vehicle":{
+		"id": 68,
+		"name": "string(STR_RV_NAME_PLST_2)",
+		"refittable_cargo_classes": "bitmask(CC_BULK, CC_POWDERIZED)",
+		"default_cargo_type": "DIAT"
+	},
+	"vehicle":{
+		"id": 69,
+		"name": "string(STR_RV_NAME_PLST_3)",
+		"refittable_cargo_classes": "bitmask(CC_BULK, CC_POWDERIZED)",
+		"default_cargo_type": "DIAT"
+	}
+}

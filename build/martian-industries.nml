@@ -1,0 +1,1311 @@
+grf {
+	grfid: "KK\03\01";
+	name: string(STR_GRF_NAME);
+	desc: string(STR_GRF_DESCRIPTION);
+	version: 0;
+	min_compatible_version: 0;
+}
+
+/*	override the vehicles in Toyland to Mars Conversion or they double up when you try to modify them */
+engine_override("MeoT");
+/*	declare the cargos that will be used in the GRF with their 4 letter labels
+	http://www.tt-wiki.net/wiki/NMLTutorial/Cargotable */
+cargotable {
+	PASS, MAIL, HYCH, DIAT, WOOD, DEUT, CHEM, ALOY, LUMB, SUPP, PLST
+}
+
+/*	cargo
+	http://newgrf-specs.tt-wiki.net/wiki/NML:Cargos
+*/
+
+item (FEAT_CARGOS, cargo_PASS, 0) {
+	property {
+		number:						0;
+		type_name:					string(STR_CARGO_NAME_PASS);
+		unit_name: 					string(STR_CARGO_NAME_PASS);
+		units_of_cargo:				string(STR_CARGO_UNIT_PASS);
+		items_of_cargo:				string(STR_CARGO_UNIT_PASS);
+	}
+}
+
+item (FEAT_CARGOS, cargo_DIAT, 1) {
+	property {
+		number:						1;
+		type_name:					string(STR_CARGO_NAME_DIAT);
+		unit_name: 					string(STR_CARGO_NAME_DIAT);
+		units_of_cargo:				string(STR_CARGO_UNIT_DIAT);
+		items_of_cargo:				string(STR_CARGO_UNIT_DIAT);
+		type_abbreviation:			string(STR_CID_DIAT);
+		sprite: 					4316;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_POWDERIZED, CC_BULK);
+		cargo_label:				"DIAT";
+		town_growth_effect:			TOWNGROWTH_NONE;
+		capacity_multiplier:		1;
+	}
+}
+
+// Mail - ID 2
+
+item (FEAT_CARGOS, cargo_SUPP, 5) {
+	property {
+		number:						5;
+		type_name:					string(STR_CARGO_NAME_SUPP);
+		unit_name: 					string(STR_CARGO_NAME_SUPP);
+		units_of_cargo:				string(STR_CARGO_UNIT_SUPP);
+		items_of_cargo:				string(STR_CARGO_UNIT_SUPP);
+		type_abbreviation:			string(STR_CID_SUPP);
+		sprite: 					4302;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_PIECE_GOODS, CC_EXPRESS, CC_REFRIGERATED);
+		cargo_label:				"SUPP";
+		town_growth_effect:			TOWNGROWTH_GOODS;
+		town_growth_multiplier:		4;
+		capacity_multiplier:		2;
+	}
+}
+
+item (FEAT_CARGOS, cargo_ALOY, 8) {
+	property {
+		number:						8;
+		type_name:					string(STR_CARGO_NAME_ALOY);
+		unit_name: 					string(STR_CARGO_NAME_ALOY);
+		units_of_cargo:				string(STR_CARGO_UNIT_ALOY);
+		items_of_cargo:				string(STR_CARGO_UNIT_ALOY);
+		type_abbreviation:			string(STR_CID_ALOY);
+		sprite: 					4306;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_PIECE_GOODS);
+		cargo_label:				"ALOY";
+		town_growth_effect:			TOWNGROWTH_NONE;
+		capacity_multiplier:		1;
+	}
+}
+
+item (FEAT_CARGOS, cargo_CHEM, 3) {
+	property {
+		number:						3;
+		type_name:					string(STR_CARGO_NAME_CHEM);
+		unit_name: 					string(STR_CARGO_NAME_CHEM);
+		units_of_cargo:				string(STR_CARGO_UNIT_CHEM);
+		items_of_cargo:				string(STR_CARGO_UNIT_CHEM);
+		type_abbreviation:			string(STR_CID_CHEM);
+		sprite: 					4322;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_HAZARDOUS, CC_LIQUID);
+		cargo_label:				"CHEM";
+		town_growth_effect:			TOWNGROWTH_NONE;
+		capacity_multiplier:		1;
+	}
+}
+
+item (FEAT_CARGOS, cargo_LUMB, 6) {
+	property {
+		number:						6;
+		type_name:					string(STR_CARGO_NAME_LUMB);
+		unit_name: 					string(STR_CARGO_NAME_LUMB);
+		units_of_cargo:				string(STR_CARGO_UNIT_LUMB);
+		items_of_cargo:				string(STR_CARGO_UNIT_LUMB);
+		type_abbreviation:			string(STR_CID_LUMB);
+		sprite: 					4314;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_PIECE_GOODS, CC_COVERED, CC_BULK);
+		cargo_label:				"LUMB";
+		town_growth_effect:			TOWNGROWTH_NONE;
+		capacity_multiplier:		1;
+	}
+}
+
+item (FEAT_CARGOS, cargo_HYCH, 7) {
+	property {
+		number:						7;
+		type_name:					string(STR_CARGO_NAME_HYCH);
+		unit_name: 					string(STR_CARGO_NAME_HYCH);
+		units_of_cargo:				string(STR_CARGO_UNIT_HYCH);
+		items_of_cargo:				string(STR_CARGO_UNIT_HYCH);
+		type_abbreviation:			string(STR_CID_HYCH);
+		sprite: 					4311;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_LIQUID);
+		cargo_label:				"HYCH";
+		town_growth_effect:			TOWNGROWTH_NONE;
+		capacity_multiplier:		1;
+	}
+}
+
+item (FEAT_CARGOS, cargo_WOOD, 4) {
+	property {
+		number:						4;
+		type_name:					string(STR_CARGO_NAME_WOOD);
+		unit_name: 					string(STR_CARGO_NAME_WOOD);
+		units_of_cargo:				string(STR_CARGO_UNIT_WOOD);
+		items_of_cargo:				string(STR_CARGO_UNIT_WOOD);
+		type_abbreviation:			string(STR_CID_WOOD);
+		sprite: 					4304;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_PIECE_GOODS);
+		cargo_label:				"WOOD";
+		town_growth_effect:			TOWNGROWTH_NONE;
+		capacity_multiplier:		1;
+	}
+}
+item (FEAT_CARGOS, cargo_DEUT, 9) {
+	property {
+		number:						9;
+		type_name:					string(STR_CARGO_NAME_DEUT);
+		unit_name: 					string(STR_CARGO_NAME_DEUT);
+		units_of_cargo:				string(STR_CARGO_UNIT_DEUT);
+		items_of_cargo:				string(STR_CARGO_UNIT_DEUT);
+		type_abbreviation:			string(STR_CID_DEUT);
+		sprite: 					4321;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_LIQUID);
+		cargo_label:				"DEUT";
+		town_growth_effect:			TOWNGROWTH_GOODS;
+		town_growth_multiplier:		2;
+		capacity_multiplier:		1;
+	}
+}
+item (FEAT_CARGOS, cargo_PLST, 10) {
+	property {
+		number:						10;
+		type_name:					string(STR_CARGO_NAME_PLST);
+		unit_name: 					string(STR_CARGO_NAME_PLST);
+		units_of_cargo:				string(STR_CARGO_UNIT_PLST);
+		items_of_cargo:				string(STR_CARGO_UNIT_PLST);
+		type_abbreviation:			string(STR_CID_PLST);
+		sprite: 					4321;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_BULK);
+		cargo_label:				"PLST";
+		town_growth_effect:			TOWNGROWTH_NONE;
+		capacity_multiplier:		1;
+	}
+}
+
+/* not yet implemented */
+disable_item(FEAT_CARGOS, 11);
+/* automated manufactory */
+item(FEAT_INDUSTRIES, industry_am, 31) {
+		property {
+		substitute: 31;
+		override: 31;
+		prod_cargo_types: [SUPP];
+		accept_cargo_types: [ALOY, CHEM, PLST];
+		prod_multiplier: [15];
+		min_cargo_distr: 5;
+		name: string(STR_IND_NAME_AM);
+		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_IND_NAME_AM));
+		life_type: IND_LIFE_TYPE_PROCESSING;
+		closure_msg: TTD_STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS;
+		prod_increase_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL;
+		prod_decrease_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL;
+		new_ind_msg: TTD_STR_NEWS_INDUSTRY_CONSTRUCTION;
+		random_sound_effects: [0x03, 0x27];
+		conflicting_ind_types: [31];
+		input_multiplier_1: [0];
+		input_multiplier_2: [0];
+		input_multiplier_3: [0];
+		spec_flags: bitmask(IND_FLAG_BUILT_NEAR_TOWN);
+		prob_random: 3;
+		prob_in_game: 2;
+		prospect_chance: 0;
+		fund_cost_multiplier: 100;
+		remove_cost_multiplier: 0;
+			}
+}item(FEAT_INDUSTRYTILES, industry_am_tile_142, 142) {
+	property {
+		substitute:					142;
+		override:					142;
+		accepted_cargos:			[[ALOY, 8],[CHEM, 8], [PLST, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_am_tile_143, 143) {
+	property {
+		substitute:					143;
+		override:					143;
+		accepted_cargos:			[[ALOY, 8],[CHEM, 8], [PLST, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_am_tile_144, 144) {
+	property {
+		substitute:					144;
+		override:					144;
+		accepted_cargos:			[[ALOY, 8],[CHEM, 8], [PLST, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_am_tile_145, 145) {
+	property {
+		substitute:					145;
+		override:					145;
+		accepted_cargos:			[[ALOY, 8],[CHEM, 8], [PLST, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_am_tile_146, 146) {
+	property {
+		substitute:					146;
+		override:					146;
+		accepted_cargos:			[[ALOY, 8],[CHEM, 8], [PLST, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_am_tile_147, 147) {
+	property {
+		substitute:					147;
+		override:					147;
+		accepted_cargos:			[[ALOY, 8],[CHEM, 8], [PLST, 8]];
+	}
+}
+/* bio-plastic extractor */
+item(FEAT_INDUSTRIES, industry_bpe, 35) {
+		property {
+		substitute: 35;
+		override: 35;
+		prod_cargo_types: [PLST];
+		accept_cargo_types: [LUMB];
+		prod_multiplier: [15];
+		min_cargo_distr: 5;
+		name: string(STR_IND_NAME_BPE);
+		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_IND_NAME_BPE));
+		life_type: IND_LIFE_TYPE_PROCESSING;
+		closure_msg: TTD_STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS;
+		prod_increase_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL;
+		prod_decrease_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL;
+		new_ind_msg: TTD_STR_NEWS_INDUSTRY_CONSTRUCTION;
+		random_sound_effects: [];
+		conflicting_ind_types: [35];
+		input_multiplier_1: [0];
+		input_multiplier_2: [0];
+		input_multiplier_3: [0];
+		spec_flags: bitmask();
+		prob_random: 3;
+		prob_in_game: 2;
+		prospect_chance: 0;
+		fund_cost_multiplier: 100;
+		remove_cost_multiplier: 0;
+			}
+}item(FEAT_INDUSTRYTILES, industry_bpe_tile_164, 164) {
+	property {
+		substitute:					164;
+		override:					164;
+		accepted_cargos:			[[LUMB, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_bpe_tile_165, 165) {
+	property {
+		substitute:					165;
+		override:					165;
+		accepted_cargos:			[[LUMB, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_bpe_tile_166, 166) {
+	property {
+		substitute:					166;
+		override:					166;
+		accepted_cargos:			[[LUMB, 8]];
+	}
+}
+/* ceramic kiln */
+item(FEAT_INDUSTRIES, industry_ck, 30) {
+		property {
+		substitute: 30;
+		override: 30;
+		prod_cargo_types: [ALOY];
+		accept_cargo_types: [DIAT, CHEM];
+		prod_multiplier: [15];
+		min_cargo_distr: 5;
+		name: string(STR_IND_NAME_CK);
+		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_IND_NAME_CK));
+		life_type: IND_LIFE_TYPE_PROCESSING;
+		closure_msg: TTD_STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS;
+		prod_increase_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL;
+		prod_decrease_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL;
+		new_ind_msg: TTD_STR_NEWS_INDUSTRY_CONSTRUCTION;
+		random_sound_effects: [];
+		conflicting_ind_types: [30];
+		input_multiplier_1: [0];
+		input_multiplier_2: [0];
+		input_multiplier_3: [0];
+		spec_flags: bitmask();
+		prob_random: 3;
+		prob_in_game: 2;
+		prospect_chance: 0;
+		fund_cost_multiplier: 100;
+		remove_cost_multiplier: 0;
+			}
+}item(FEAT_INDUSTRYTILES, industry_ck_tile_138, 138) {
+	property {
+		substitute:					138;
+		override:					138;
+		accepted_cargos:			[[DIAT, 8], [CHEM, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_ck_tile_139, 139) {
+	property {
+		substitute:					139;
+		override:					139;
+		accepted_cargos:			[[DIAT, 8], [CHEM, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_ck_tile_140, 140) {
+	property {
+		substitute:					140;
+		override:					140;
+		accepted_cargos:			[[DIAT, 8], [CHEM, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_ck_tile_141, 141) {
+	property {
+		substitute:					141;
+		override:					141;
+		accepted_cargos:			[[DIAT, 8], [CHEM, 8]];
+	}
+}
+
+			produce (clp_produce, waiting_cargo_1, 0, 0, waiting_cargo_1, waiting_cargo_1);
+		/* colony landing pod */
+item(FEAT_INDUSTRIES, industry_clp, 29) {
+		graphics {
+		
+			produce_cargo_arrival: clp_produce;
+		
+	}
+		property {
+		substitute: 29;
+		override: 29;
+		prod_cargo_types: [SUPP, PASS];
+		accept_cargo_types: [DEUT];
+		prod_multiplier: [15, 15];
+		min_cargo_distr: 5;
+		name: string(STR_IND_NAME_CLP);
+		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_IND_NAME_CLP));
+		life_type: IND_LIFE_TYPE_PROCESSING;
+		closure_msg: TTD_STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS;
+		prod_increase_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL;
+		prod_decrease_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL;
+		new_ind_msg: TTD_STR_NEWS_INDUSTRY_CONSTRUCTION;
+		random_sound_effects: [];
+		conflicting_ind_types: [];
+		input_multiplier_1: [0];
+		input_multiplier_2: [0];
+		input_multiplier_3: [0];
+		spec_flags: bitmask();
+		prob_random: 3;
+		prob_in_game: 2;
+		prospect_chance: 0;
+		fund_cost_multiplier: 100;
+		remove_cost_multiplier: 0;
+		layouts: [industry_clp_layout_1, industry_clp_layout_3, industry_clp_layout_2];	}
+}item(FEAT_INDUSTRYTILES, industry_clp_tile_137, 137) {
+	property {
+		substitute:					137;
+		override:					137;
+		accepted_cargos:			[[DEUT, 8]];
+	}
+}
+tilelayout industry_clp_layout_1 {
+	
+				0, 0: 137;
+		 		2, 1: 137;
+	 			5, 3: 137;
+	 			1, 5: 137;
+	 			4, 4: 137;
+}tilelayout industry_clp_layout_3 {
+	
+	 			1, 1: 137;
+				4, 3: 137;
+				0, 2: 137;
+}tilelayout industry_clp_layout_2 {
+	
+	 			0, 0: 137;
+}/* Diatomaceous Soil Mine */
+item(FEAT_INDUSTRIES, industry_dsm, 36) {
+		property {
+		substitute: 36;
+		override: 36;
+		prod_cargo_types: [DIAT];
+		accept_cargo_types: [];
+		prod_multiplier: [15];
+		min_cargo_distr: 5;
+		name: string(STR_IND_NAME_DSM);
+		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_IND_NAME_DSM));
+		life_type: IND_LIFE_TYPE_EXTRACTIVE;
+		closure_msg: TTD_STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS;
+		prod_increase_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL;
+		prod_decrease_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL;
+		new_ind_msg: TTD_STR_NEWS_INDUSTRY_CONSTRUCTION;
+		random_sound_effects: [];
+		conflicting_ind_types: [];
+		input_multiplier_1: [0];
+		input_multiplier_2: [0];
+		input_multiplier_3: [0];
+		spec_flags: bitmask();
+		prob_random: 3;
+		prob_in_game: 2;
+		prospect_chance: 0;
+		fund_cost_multiplier: 100;
+		remove_cost_multiplier: 0;
+			}
+}item(FEAT_INDUSTRYTILES, industry_dsm_tile_167, 167) {
+	property {
+		substitute:					167;
+		override:					167;
+		accepted_cargos:			[];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_dsm_tile_168, 168) {
+	property {
+		substitute:					168;
+		override:					168;
+		accepted_cargos:			[];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_dsm_tile_169, 169) {
+	property {
+		substitute:					169;
+		override:					169;
+		accepted_cargos:			[];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_dsm_tile_170, 170) {
+	property {
+		substitute:					170;
+		override:					170;
+		accepted_cargos:			[];
+	}
+}
+/* fusion reactor */
+item(FEAT_INDUSTRIES, industry_fr, 27) {
+		property {
+		substitute: 27;
+		override: 27;
+		prod_cargo_types: [];
+		accept_cargo_types: [DEUT];
+		prod_multiplier: [15];
+		min_cargo_distr: 5;
+		name: string(STR_IND_NAME_FR);
+		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_IND_NAME_FR));
+		life_type: IND_LIFE_TYPE_BLACK_HOLE;
+		closure_msg: TTD_STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS;
+		prod_increase_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL;
+		prod_decrease_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL;
+		new_ind_msg: TTD_STR_NEWS_INDUSTRY_CONSTRUCTION;
+		random_sound_effects: [];
+		conflicting_ind_types: [];
+		input_multiplier_1: [0];
+		input_multiplier_2: [0];
+		input_multiplier_3: [0];
+		spec_flags: bitmask();
+		prob_random: 3;
+		prob_in_game: 2;
+		prospect_chance: 0;
+		fund_cost_multiplier: 100;
+		remove_cost_multiplier: 0;
+		layouts: [industry_fr_layout_1];	}
+}item(FEAT_INDUSTRYTILES, industry_fr_tile_131, 131) {
+	property {
+		substitute:					131;
+		override:					131;
+		accepted_cargos:			[[DEUT, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_fr_tile_132, 132) {
+	property {
+		substitute:					132;
+		override:					132;
+		accepted_cargos:			[[DEUT, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_fr_tile_133, 133) {
+	property {
+		substitute:					133;
+		override:					133;
+		accepted_cargos:			[[DEUT, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_fr_tile_134, 134) {
+	property {
+		substitute:					134;
+		override:					134;
+		accepted_cargos:			[[DEUT, 8]];
+	}
+}
+tilelayout industry_fr_layout_1 {
+	
+				0, 0: 131;
+				0, 1: 132;
+				1, 0: 133;
+				1, 1: 134;
+}/* hydrochemical drill */
+item(FEAT_INDUSTRIES, industry_hcd, 32) {
+		property {
+		substitute: 32;
+		override: 32;
+		prod_cargo_types: [HYCH];
+		accept_cargo_types: [];
+		prod_multiplier: [15];
+		min_cargo_distr: 5;
+		name: string(STR_IND_NAME_HCD);
+		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_IND_NAME_HCD));
+		life_type: IND_LIFE_TYPE_EXTRACTIVE;
+		closure_msg: TTD_STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS;
+		prod_increase_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL;
+		prod_decrease_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL;
+		new_ind_msg: TTD_STR_NEWS_INDUSTRY_CONSTRUCTION;
+		random_sound_effects: [];
+		conflicting_ind_types: [];
+		input_multiplier_1: [0];
+		input_multiplier_2: [0];
+		input_multiplier_3: [0];
+		spec_flags: bitmask();
+		prob_random: 3;
+		prob_in_game: 2;
+		prospect_chance: 0;
+		fund_cost_multiplier: 100;
+		remove_cost_multiplier: 0;
+		layouts: [industry_hcd_layout_1, industry_hcd_layout_3, industry_hcd_layout_2];	}
+}item(FEAT_INDUSTRYTILES, industry_hcd_tile_148, 148) {
+	property {
+		substitute:					148;
+		override:					148;
+		accepted_cargos:			[];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_hcd_tile_149, 149) {
+	property {
+		substitute:					149;
+		override:					149;
+		accepted_cargos:			[];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_hcd_tile_150, 150) {
+	property {
+		substitute:					150;
+		override:					150;
+		accepted_cargos:			[];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_hcd_tile_151, 151) {
+	property {
+		substitute:					151;
+		override:					151;
+		accepted_cargos:			[];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_hcd_tile_152, 152) {
+	property {
+		substitute:					152;
+		override:					152;
+		accepted_cargos:			[];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_hcd_tile_153, 153) {
+	property {
+		substitute:					153;
+		override:					153;
+		accepted_cargos:			[];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_hcd_tile_154, 154) {
+	property {
+		substitute:					154;
+		override:					154;
+		accepted_cargos:			[];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_hcd_tile_155, 155) {
+	property {
+		substitute:					155;
+		override:					155;
+		accepted_cargos:			[];
+	}
+}
+tilelayout industry_hcd_layout_1 {
+	
+			 	0, 0: 148;
+			 	0, 1: 151;
+			 	0, 2: 154;
+			 	0, 3: 151;
+			 	0, 4: 148;
+}tilelayout industry_hcd_layout_3 {
+	
+			 	0, 0: 148;
+			 	1, 0: 151;
+			 	2, 0: 154;
+			 	3, 0: 151;
+			 	4, 0: 148;
+			 	4, 1: 151;
+			 	4, 2: 154;
+			 	4, 3: 151;
+			 	4, 4: 148;
+}tilelayout industry_hcd_layout_2 {
+	
+			 	0, 2: 148;
+			 	1, 2: 151;
+			 	2, 2: 154;
+			 	3, 2: 151;
+			 	4, 2: 148;
+			 	2, 0: 148;
+			 	2, 1: 151;
+			 	2, 3: 151;
+			 	2, 4: 148;
+}/* hydrochemical refinery */
+item(FEAT_INDUSTRIES, industry_hcr, 33) {
+		property {
+		substitute: 33;
+		override: 33;
+		prod_cargo_types: [DEUT,CHEM];
+		accept_cargo_types: [HYCH];
+		prod_multiplier: [15, 15];
+		min_cargo_distr: 5;
+		name: string(STR_IND_NAME_HCR);
+		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_IND_NAME_HCR));
+		life_type: IND_LIFE_TYPE_PROCESSING;
+		closure_msg: TTD_STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS;
+		prod_increase_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL;
+		prod_decrease_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL;
+		new_ind_msg: TTD_STR_NEWS_INDUSTRY_CONSTRUCTION;
+		random_sound_effects: [];
+		conflicting_ind_types: [];
+		input_multiplier_1: [0];
+		input_multiplier_2: [0];
+		input_multiplier_3: [0];
+		spec_flags: bitmask();
+		prob_random: 3;
+		prob_in_game: 2;
+		prospect_chance: 0;
+		fund_cost_multiplier: 100;
+		remove_cost_multiplier: 0;
+			}
+}item(FEAT_INDUSTRYTILES, industry_hcr_tile_156, 156) {
+	property {
+		substitute:					156;
+		override:					156;
+		accepted_cargos:			[[HYCH, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_hcr_tile_157, 157) {
+	property {
+		substitute:					157;
+		override:					157;
+		accepted_cargos:			[[HYCH, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_hcr_tile_158, 158) {
+	property {
+		substitute:					158;
+		override:					158;
+		accepted_cargos:			[[HYCH, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_hcr_tile_159, 159) {
+	property {
+		substitute:					159;
+		override:					159;
+		accepted_cargos:			[[HYCH, 8]];
+	}
+}
+/* terran food plantation */
+item(FEAT_INDUSTRIES, industry_tfp, 26) {
+		property {
+		substitute: 26;
+		override: 26;
+		prod_cargo_types: [SUPP];
+		accept_cargo_types: [CHEM];
+		prod_multiplier: [15];
+		min_cargo_distr: 5;
+		name: string(STR_IND_NAME_TFP);
+		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_IND_NAME_TFP));
+		life_type: IND_LIFE_TYPE_PROCESSING;
+		closure_msg: TTD_STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS;
+		prod_increase_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL;
+		prod_decrease_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL;
+		new_ind_msg: TTD_STR_NEWS_INDUSTRY_CONSTRUCTION;
+		random_sound_effects: [];
+		conflicting_ind_types: [];
+		input_multiplier_1: [0];
+		input_multiplier_2: [0];
+		input_multiplier_3: [0];
+		spec_flags: bitmask();
+		prob_random: 3;
+		prob_in_game: 2;
+		prospect_chance: 0;
+		fund_cost_multiplier: 100;
+		remove_cost_multiplier: 0;
+		layouts: [industry_tfp_layout_1];	}
+}item(FEAT_INDUSTRYTILES, industry_tfp_tile_129, 129) {
+	property {
+		substitute:					129;
+		override:					129;
+		accepted_cargos:			[[CHEM, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_tfp_tile_130, 130) {
+	property {
+		substitute:					130;
+		override:					130;
+		accepted_cargos:			[[CHEM, 8]];
+	}
+}
+tilelayout industry_tfp_layout_1 {
+	
+				4, 3: 129;
+				3, 2: 129;
+				2, 3: 129;
+				2, 4: 129;
+				3, 5: 129;
+				4, 5: 129;
+				5, 5: 129;
+				6, 4: 129;
+				6, 3: 129;
+				6, 2: 129;
+				5, 1: 129;
+				4, 0: 129;
+				3, 0: 129;
+				2, 0: 129;
+				1, 1: 129;
+				0, 2: 129;
+				0, 3: 129;
+				0, 4: 129;
+				0, 5: 129;
+				1, 6: 129;
+				2, 7: 129;
+				3, 7: 129;
+				4, 7: 129;
+				
+}/* xeno-arboretum */
+item(FEAT_INDUSTRIES, industry_xa, 28) {
+		property {
+		substitute: 28;
+		override: 28;
+		prod_cargo_types: [WOOD];
+		accept_cargo_types: [];
+		prod_multiplier: [15];
+		min_cargo_distr: 5;
+		name: string(STR_IND_NAME_XA);
+		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_IND_NAME_XA));
+		life_type: IND_LIFE_TYPE_EXTRACTIVE;
+		closure_msg: TTD_STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS;
+		prod_increase_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL;
+		prod_decrease_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL;
+		new_ind_msg: TTD_STR_NEWS_INDUSTRY_CONSTRUCTION;
+		random_sound_effects: [];
+		conflicting_ind_types: [];
+		input_multiplier_1: [0];
+		input_multiplier_2: [0];
+		input_multiplier_3: [0];
+		spec_flags: bitmask();
+		prob_random: 3;
+		prob_in_game: 2;
+		prospect_chance: 0;
+		fund_cost_multiplier: 100;
+		remove_cost_multiplier: 0;
+		layouts: [industry_xa_layout_1, industry_xa_layout_2];	}
+}item(FEAT_INDUSTRYTILES, industry_xa_tile_135, 135) {
+	property {
+		substitute:					135;
+		override:					135;
+		accepted_cargos:			[];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_xa_tile_136, 136) {
+	property {
+		substitute:					136;
+		override:					136;
+		accepted_cargos:			[];
+	}
+}
+tilelayout industry_xa_layout_1 {
+	
+			 	0, 0: 135;
+			 	0, 1: 135;
+			 	0, 2: 135;
+			 	0, 3: 135;
+			 	0, 4: 135;
+			 	2, 0: 135;
+			 	2, 1: 135;
+			 	2, 2: 135;
+			 	2, 3: 135;
+			 	2, 4: 135;
+			 	4, 0: 135;
+			 	4, 1: 135;
+			 	4, 2: 135;
+			 	4, 3: 135;
+			 	4, 4: 135;
+				
+}tilelayout industry_xa_layout_2 {
+	
+			 	0, 0: 135;
+			 	1, 0: 135;
+			 	2, 0: 135;
+			 	3, 0: 135;
+			 	4, 0: 135;
+			 	5, 0: 135;
+			 	6, 0: 135;
+			 	7, 0: 135;
+			 	0, 2: 135;
+			 	1, 2: 135;
+			 	2, 2: 135;
+			 	3, 2: 135;
+			 	4, 2: 135;
+			 	5, 2: 135;
+			 	6, 2: 135;
+			 	7, 2: 135;
+			 	0, 4: 135;
+			 	1, 4: 135;
+			 	2, 4: 135;
+			 	3, 4: 135;
+			 	4, 4: 135;
+			 	5, 4: 135;
+			 	6, 4: 135;
+			 	7, 4: 135;
+			 	0, 6: 135;
+			 	1, 6: 135;
+			 	2, 6: 135;
+			 	3, 6: 135;
+			 	4, 6: 135;
+			 	5, 6: 135;
+			 	6, 6: 135;
+			 	7, 6: 135;
+				
+}/* xeno-flora processing */
+item(FEAT_INDUSTRIES, industry_xfp, 34) {
+		property {
+		substitute: 34;
+		override: 34;
+		prod_cargo_types: [LUMB];
+		accept_cargo_types: [WOOD];
+		prod_multiplier: [15];
+		min_cargo_distr: 5;
+		name: string(STR_IND_NAME_XFP);
+		nearby_station_name: string(STR_STATION, string(STR_TOWN), string(STR_IND_NAME_XFP));
+		life_type: IND_LIFE_TYPE_PROCESSING;
+		closure_msg: TTD_STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS;
+		prod_increase_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL;
+		prod_decrease_msg: TTD_STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL;
+		new_ind_msg: TTD_STR_NEWS_INDUSTRY_CONSTRUCTION;
+		random_sound_effects: [];
+		conflicting_ind_types: [];
+		input_multiplier_1: [0];
+		input_multiplier_2: [0];
+		input_multiplier_3: [0];
+		spec_flags: bitmask();
+		prob_random: 3;
+		prob_in_game: 2;
+		prospect_chance: 0;
+		fund_cost_multiplier: 100;
+		remove_cost_multiplier: 0;
+			}
+}item(FEAT_INDUSTRYTILES, industry_xfp_tile_160, 160) {
+	property {
+		substitute:					160;
+		override:					160;
+		accepted_cargos:			[[WOOD, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_xfp_tile_161, 161) {
+	property {
+		substitute:					161;
+		override:					161;
+		accepted_cargos:			[[WOOD, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_xfp_tile_162, 162) {
+	property {
+		substitute:					162;
+		override:					162;
+		accepted_cargos:			[[WOOD, 8]];
+	}
+}
+item(FEAT_INDUSTRYTILES, industry_xfp_tile_163, 163) {
+	property {
+		substitute:					163;
+		override:					163;
+		accepted_cargos:			[[WOOD, 8]];
+	}
+}
+/* Vehicles */
+item(FEAT_TRAINS, train_44, 44) {
+	property {
+		name: string(STR_TRAIN_NAME_DIAT);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: DIAT;
+	}
+}
+item(FEAT_TRAINS, train_74, 74) {
+	property {
+		name: string(STR_TRAIN_NAME_DIAT);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: DIAT;
+	}
+}
+item(FEAT_TRAINS, train_106, 106) {
+	property {
+		name: string(STR_TRAIN_NAME_DIAT);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: DIAT;
+	}
+}
+item(FEAT_TRAINS, train_46, 46) {
+	property {
+		name: string(STR_TRAIN_NAME_PLST);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: PLST;
+	}
+}
+item(FEAT_TRAINS, train_76, 76) {
+	property {
+		name: string(STR_TRAIN_NAME_PLST);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: PLST;
+	}
+}
+item(FEAT_TRAINS, train_108, 108) {
+	property {
+		name: string(STR_TRAIN_NAME_PLST);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: PLST;
+	}
+}
+item(FEAT_TRAINS, train_45, 45) {
+	property {
+		name: string(STR_TRAIN_NAME_HOPPER);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: DIAT;
+	}
+}
+item(FEAT_TRAINS, train_75, 75) {
+	property {
+		name: string(STR_TRAIN_NAME_HOPPER);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: DIAT;
+	}
+}
+item(FEAT_TRAINS, train_107, 107) {
+	property {
+		name: string(STR_TRAIN_NAME_HOPPER);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: DIAT;
+	}
+}
+item(FEAT_TRAINS, train_48, 48) {
+	property {
+		name: string(STR_TRAIN_NAME_DEUT);
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		default_cargo_type: DEUT;
+	}
+}
+item(FEAT_TRAINS, train_78, 78) {
+	property {
+		name: string(STR_TRAIN_NAME_DEUT);
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		default_cargo_type: DEUT;
+	}
+}
+item(FEAT_TRAINS, train_110, 110) {
+	property {
+		name: string(STR_TRAIN_NAME_DEUT);
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		default_cargo_type: DEUT;
+	}
+}
+item(FEAT_TRAINS, train_53, 53) {
+	property {
+		name: string(STR_TRAIN_NAME_HYCH);
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		default_cargo_type: HYCH;
+	}
+}
+item(FEAT_TRAINS, train_83, 83) {
+	property {
+		name: string(STR_TRAIN_NAME_HYCH);
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		default_cargo_type: HYCH;
+	}
+}
+item(FEAT_TRAINS, train_115, 115) {
+	property {
+		name: string(STR_TRAIN_NAME_HYCH);
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		default_cargo_type: HYCH;
+	}
+}
+item(FEAT_TRAINS, train_47, 47) {
+	property {
+		name: string(STR_TRAIN_NAME_CHEM);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED, CC_HAZARDOUS);
+		default_cargo_type: CHEM;
+	}
+}
+item(FEAT_TRAINS, train_77, 77) {
+	property {
+		name: string(STR_TRAIN_NAME_CHEM);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED, CC_HAZARDOUS);
+		default_cargo_type: CHEM;
+	}
+}
+item(FEAT_TRAINS, train_109, 109) {
+	property {
+		name: string(STR_TRAIN_NAME_CHEM);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED, CC_HAZARDOUS);
+		default_cargo_type: CHEM;
+	}
+}
+item(FEAT_TRAINS, train_49, 49) {
+	property {
+		name: string(STR_TRAIN_NAME_SUPP);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED, CC_EXPRESS, CC_REFRIGERATED);
+		default_cargo_type: SUPP;
+	}
+}
+item(FEAT_TRAINS, train_79, 79) {
+	property {
+		name: string(STR_TRAIN_NAME_SUPP);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED, CC_EXPRESS, CC_REFRIGERATED);
+		default_cargo_type: SUPP;
+	}
+}
+item(FEAT_TRAINS, train_111, 111) {
+	property {
+		name: string(STR_TRAIN_NAME_SUPP);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED, CC_EXPRESS, CC_REFRIGERATED);
+		default_cargo_type: SUPP;
+	}
+}
+item(FEAT_TRAINS, train_50, 50) {
+	property {
+		name: string(STR_TRAIN_NAME_LUMB);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED);
+		default_cargo_type: LUMB;
+	}
+}
+item(FEAT_TRAINS, train_80, 80) {
+	property {
+		name: string(STR_TRAIN_NAME_LUMB);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED);
+		default_cargo_type: LUMB;
+	}
+}
+item(FEAT_TRAINS, train_112, 112) {
+	property {
+		name: string(STR_TRAIN_NAME_LUMB);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED);
+		default_cargo_type: LUMB;
+	}
+}
+item(FEAT_TRAINS, train_51, 51) {
+	property {
+		name: string(STR_TRAIN_NAME_WOOD);
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_OVERSIZED, CC_NEO_BULK);
+		default_cargo_type: WOOD;
+	}
+}
+item(FEAT_TRAINS, train_81, 81) {
+	property {
+		name: string(STR_TRAIN_NAME_WOOD);
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_OVERSIZED, CC_NEO_BULK);
+		default_cargo_type: WOOD;
+	}
+}
+item(FEAT_TRAINS, train_113, 113) {
+	property {
+		name: string(STR_TRAIN_NAME_WOOD);
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_OVERSIZED, CC_NEO_BULK);
+		default_cargo_type: WOOD;
+	}
+}
+item(FEAT_ROADVEHS, rv_58, 58) {
+	property {
+		name: string(STR_RV_NAME_DIAT_1);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: DIAT;
+	}
+}
+item(FEAT_ROADVEHS, rv_59, 59) {
+	property {
+		name: string(STR_RV_NAME_DIAT_2);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: DIAT;
+	}
+}
+item(FEAT_ROADVEHS, rv_60, 60) {
+	property {
+		name: string(STR_RV_NAME_DIAT_3);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: DIAT;
+	}
+}
+item(FEAT_ROADVEHS, rv_67, 67) {
+	property {
+		name: string(STR_RV_NAME_PLST_1);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: PLST;
+	}
+}
+item(FEAT_ROADVEHS, rv_68, 68) {
+	property {
+		name: string(STR_RV_NAME_PLST_2);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: PLST;
+	}
+}
+item(FEAT_ROADVEHS, rv_69, 69) {
+	property {
+		name: string(STR_RV_NAME_PLST_3);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: PLST;
+	}
+}
+item(FEAT_ROADVEHS, rv_64, 64) {
+	property {
+		name: string(STR_RV_NAME_HOPPER_1);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: DIAT;
+	}
+}
+item(FEAT_ROADVEHS, rv_65, 65) {
+	property {
+		name: string(STR_RV_NAME_HOPPER_2);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: DIAT;
+	}
+}
+item(FEAT_ROADVEHS, rv_66, 66) {
+	property {
+		name: string(STR_RV_NAME_HOPPER_3);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_POWDERIZED);
+		default_cargo_type: DIAT;
+	}
+}
+item(FEAT_ROADVEHS, rv_61, 61) {
+	property {
+		name: string(STR_RV_NAME_DEUT_1);
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		default_cargo_type: DEUT;
+	}
+}
+item(FEAT_ROADVEHS, rv_62, 62) {
+	property {
+		name: string(STR_RV_NAME_DEUT_2);
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		default_cargo_type: DEUT;
+	}
+}
+item(FEAT_ROADVEHS, rv_63, 63) {
+	property {
+		name: string(STR_RV_NAME_DEUT_3);
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		default_cargo_type: DEUT;
+	}
+}
+item(FEAT_ROADVEHS, rv_82, 82) {
+	property {
+		name: string(STR_RV_NAME_HYCH_1);
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		default_cargo_type: HYCH;
+	}
+}
+item(FEAT_ROADVEHS, rv_83, 83) {
+	property {
+		name: string(STR_RV_NAME_HYCH_2);
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		default_cargo_type: HYCH;
+	}
+}
+item(FEAT_ROADVEHS, rv_84, 84) {
+	property {
+		name: string(STR_RV_NAME_HYCH_3);
+		refittable_cargo_classes: bitmask(CC_LIQUID);
+		default_cargo_type: HYCH;
+	}
+}
+item(FEAT_ROADVEHS, rv_85, 85) {
+	property {
+		name: string(STR_RV_NAME_CHEM_1);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED, CC_HAZARDOUS);
+		default_cargo_type: CHEM;
+	}
+}
+item(FEAT_ROADVEHS, rv_86, 86) {
+	property {
+		name: string(STR_RV_NAME_CHEM_2);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED, CC_HAZARDOUS);
+		default_cargo_type: CHEM;
+	}
+}
+item(FEAT_ROADVEHS, rv_87, 87) {
+	property {
+		name: string(STR_RV_NAME_CHEM_3);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED, CC_HAZARDOUS);
+		default_cargo_type: CHEM;
+	}
+}
+item(FEAT_ROADVEHS, rv_73, 73) {
+	property {
+		name: string(STR_RV_NAME_SUPP_1);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED, CC_EXPRESS, CC_REFRIGERATED);
+		default_cargo_type: SUPP;
+	}
+}
+item(FEAT_ROADVEHS, rv_74, 74) {
+	property {
+		name: string(STR_RV_NAME_SUPP_2);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED, CC_EXPRESS, CC_REFRIGERATED);
+		default_cargo_type: SUPP;
+	}
+}
+item(FEAT_ROADVEHS, rv_75, 75) {
+	property {
+		name: string(STR_RV_NAME_SUPP_3);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED, CC_EXPRESS, CC_REFRIGERATED);
+		default_cargo_type: SUPP;
+	}
+}
+item(FEAT_ROADVEHS, rv_70, 70) {
+	property {
+		name: string(STR_RV_NAME_LUMB_1);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED);
+		default_cargo_type: LUMB;
+	}
+}
+item(FEAT_ROADVEHS, rv_71, 71) {
+	property {
+		name: string(STR_RV_NAME_LUMB_2);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED);
+		default_cargo_type: LUMB;
+	}
+}
+item(FEAT_ROADVEHS, rv_72, 72) {
+	property {
+		name: string(STR_RV_NAME_LUMB_3);
+		refittable_cargo_classes: bitmask(CC_BULK, CC_PIECE_GOODS, CC_COVERED, CC_NEO_BULK, CC_ARMOURED);
+		default_cargo_type: LUMB;
+	}
+}
+item(FEAT_ROADVEHS, rv_76, 76) {
+	property {
+		name: string(STR_RV_NAME_WOOD_1);
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_OVERSIZED, CC_NEO_BULK);
+		default_cargo_type: WOOD;
+	}
+}
+item(FEAT_ROADVEHS, rv_77, 77) {
+	property {
+		name: string(STR_RV_NAME_WOOD_2);
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_OVERSIZED, CC_NEO_BULK);
+		default_cargo_type: WOOD;
+	}
+}
+item(FEAT_ROADVEHS, rv_78, 78) {
+	property {
+		name: string(STR_RV_NAME_WOOD_3);
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_OVERSIZED, CC_NEO_BULK);
+		default_cargo_type: WOOD;
+	}
+}
+item(FEAT_SHIPS, ship_10, 10) {
+	property {
+		
+		refittable_cargo_classes: ALL_NORMAL_CARGO_CLASSES;
+		default_cargo_type: SUPP;
+	}
+}

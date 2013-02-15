@@ -1,0 +1,3 @@
+tilelayout industry_{{ abbr }}_layout_{{ tile }} {
+	{{ layout }}
+}

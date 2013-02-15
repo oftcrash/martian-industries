@@ -1,0 +1,5 @@
+.DS_Store
+parsetab.py
+*.pyc
+archive/
+release/

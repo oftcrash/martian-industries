@@ -1,0 +1,21 @@
+item (FEAT_CARGOS, cargo_{{ cargo_label }}, {{ id }}) {
+	property {
+		number: {{ id }};
+		{% if type_name %}type_name: string(STR_CARGO_NAME_{{ cargo_label }});{% endif %}
+		{% if unit_name %}unit_name: string(STR_CARGO_NAME_{{ cargo_label }});{% endif %}
+		{% if units_of_cargo %}units_of_cargo: string(STR_CARGO_UNIT_{{ cargo_label }});{% endif %}
+		{% if items_of_cargo %}items_of_cargo: string(STR_CARGO_UNIT_{{ cargo_label }});{% endif %}
+		{% if type_abbreviation %}type_abbreviation: string(STR_CID_{{ cargo_label }});{% endif %}
+		{% if sprite %}sprite: {{ sprite }};{% endif %}
+		{% if weight %}weight: {{ weight }};{% endif %}
+		{% if penalty_lowerbound %}penalty_lowerbound:{{ penalty_lowerbound }};{% endif %}
+		{% if single_penalty_length %}single_penalty_length: {{ single_penalty_length }};{% endif %}
+		{% if price_factor %}price_factor: {{ price_factor }};{% endif %}
+		{% if cargo_payment_list_colour %}cargo_payment_list_colour: {{ cargo_payment_list_colour }};{% endif %}
+		{% if is_freight %}is_freight: {{ is_freight }};{% endif %}
+		{% if cargo_classes %}cargo_classes: {% if 'ALL_' not in cargo_classes %}bitmask({{ cargo_classes }}){% else %}{{ cargo_classes }}{% endif %};{% endif %}
+		{% if cargo_classes %}cargo_label: "{{ cargo_label }}";{% endif %}
+		{% if town_growth_effect %}town_growth_effect: {{ town_growth_effect }};{% endif %}
+		{% if capacity_multiplier %}capacity_multiplier: {{ capacity_multiplier }};{% endif %}
+	}
+}

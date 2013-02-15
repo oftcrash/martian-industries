@@ -1,0 +1,177 @@
+/*	declare the cargos that will be used in the GRF with their 4 letter labels
+	http://www.tt-wiki.net/wiki/NMLTutorial/Cargotable */
+cargotable {
+	PASS, MAIL, HYCH, DIAT, WOOD, DEUT, CHEM, ALOY, LUMB, SUPP, PLST
+}
+
+/*	cargo
+	http://newgrf-specs.tt-wiki.net/wiki/NML:Cargos
+*/
+
+item (FEAT_CARGOS, cargo_PASS, 0) {
+	property {
+		number:						0;
+		type_name:					string(STR_CARGO_NAME_PASS);
+		unit_name: 					string(STR_CARGO_NAME_PASS);
+		units_of_cargo:				string(STR_CARGO_UNIT_PASS);
+		items_of_cargo:				string(STR_CARGO_UNIT_PASS);
+	}
+}
+
+item (FEAT_CARGOS, cargo_DIAT, 1) {
+	property {
+		number:						1;
+		type_name:					string(STR_CARGO_NAME_DIAT);
+		unit_name: 					string(STR_CARGO_NAME_DIAT);
+		units_of_cargo:				string(STR_CARGO_UNIT_DIAT);
+		items_of_cargo:				string(STR_CARGO_UNIT_DIAT);
+		type_abbreviation:			string(STR_CID_DIAT);
+		sprite: 					4316;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_POWDERIZED, CC_BULK);
+		cargo_label:				"DIAT";
+		town_growth_effect:			TOWNGROWTH_NONE;
+		capacity_multiplier:		1;
+	}
+}
+
+// Mail - ID 2
+
+item (FEAT_CARGOS, cargo_SUPP, 5) {
+	property {
+		number:						5;
+		type_name:					string(STR_CARGO_NAME_SUPP);
+		unit_name: 					string(STR_CARGO_NAME_SUPP);
+		units_of_cargo:				string(STR_CARGO_UNIT_SUPP);
+		items_of_cargo:				string(STR_CARGO_UNIT_SUPP);
+		type_abbreviation:			string(STR_CID_SUPP);
+		sprite: 					4302;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_PIECE_GOODS, CC_EXPRESS, CC_REFRIGERATED);
+		cargo_label:				"SUPP";
+		town_growth_effect:			TOWNGROWTH_GOODS;
+		town_growth_multiplier:		4;
+		capacity_multiplier:		2;
+	}
+}
+
+item (FEAT_CARGOS, cargo_ALOY, 8) {
+	property {
+		number:						8;
+		type_name:					string(STR_CARGO_NAME_ALOY);
+		unit_name: 					string(STR_CARGO_NAME_ALOY);
+		units_of_cargo:				string(STR_CARGO_UNIT_ALOY);
+		items_of_cargo:				string(STR_CARGO_UNIT_ALOY);
+		type_abbreviation:			string(STR_CID_ALOY);
+		sprite: 					4306;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_PIECE_GOODS);
+		cargo_label:				"ALOY";
+		town_growth_effect:			TOWNGROWTH_NONE;
+		capacity_multiplier:		1;
+	}
+}
+
+item (FEAT_CARGOS, cargo_CHEM, 3) {
+	property {
+		number:						3;
+		type_name:					string(STR_CARGO_NAME_CHEM);
+		unit_name: 					string(STR_CARGO_NAME_CHEM);
+		units_of_cargo:				string(STR_CARGO_UNIT_CHEM);
+		items_of_cargo:				string(STR_CARGO_UNIT_CHEM);
+		type_abbreviation:			string(STR_CID_CHEM);
+		sprite: 					4322;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_HAZARDOUS, CC_LIQUID);
+		cargo_label:				"CHEM";
+		town_growth_effect:			TOWNGROWTH_NONE;
+		capacity_multiplier:		1;
+	}
+}
+
+item (FEAT_CARGOS, cargo_LUMB, 6) {
+	property {
+		number:						6;
+		type_name:					string(STR_CARGO_NAME_LUMB);
+		unit_name: 					string(STR_CARGO_NAME_LUMB);
+		units_of_cargo:				string(STR_CARGO_UNIT_LUMB);
+		items_of_cargo:				string(STR_CARGO_UNIT_LUMB);
+		type_abbreviation:			string(STR_CID_LUMB);
+		sprite: 					4314;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_PIECE_GOODS, CC_COVERED, CC_BULK);
+		cargo_label:				"LUMB";
+		town_growth_effect:			TOWNGROWTH_NONE;
+		capacity_multiplier:		1;
+	}
+}
+
+item (FEAT_CARGOS, cargo_HYCH, 7) {
+	property {
+		number:						7;
+		type_name:					string(STR_CARGO_NAME_HYCH);
+		unit_name: 					string(STR_CARGO_NAME_HYCH);
+		units_of_cargo:				string(STR_CARGO_UNIT_HYCH);
+		items_of_cargo:				string(STR_CARGO_UNIT_HYCH);
+		type_abbreviation:			string(STR_CID_HYCH);
+		sprite: 					4311;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_LIQUID);
+		cargo_label:				"HYCH";
+		town_growth_effect:			TOWNGROWTH_NONE;
+		capacity_multiplier:		1;
+	}
+}
+
+item (FEAT_CARGOS, cargo_WOOD, 4) {
+	property {
+		number:						4;
+		type_name:					string(STR_CARGO_NAME_WOOD);
+		unit_name: 					string(STR_CARGO_NAME_WOOD);
+		units_of_cargo:				string(STR_CARGO_UNIT_WOOD);
+		items_of_cargo:				string(STR_CARGO_UNIT_WOOD);
+		type_abbreviation:			string(STR_CID_WOOD);
+		sprite: 					4304;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_PIECE_GOODS);
+		cargo_label:				"WOOD";
+		town_growth_effect:			TOWNGROWTH_NONE;
+		capacity_multiplier:		1;
+	}
+}
+item (FEAT_CARGOS, cargo_DEUT, 9) {
+	property {
+		number:						9;
+		type_name:					string(STR_CARGO_NAME_DEUT);
+		unit_name: 					string(STR_CARGO_NAME_DEUT);
+		units_of_cargo:				string(STR_CARGO_UNIT_DEUT);
+		items_of_cargo:				string(STR_CARGO_UNIT_DEUT);
+		type_abbreviation:			string(STR_CID_DEUT);
+		sprite: 					4321;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_LIQUID);
+		cargo_label:				"DEUT";
+		town_growth_effect:			TOWNGROWTH_GOODS;
+		town_growth_multiplier:		2;
+		capacity_multiplier:		1;
+	}
+}
+item (FEAT_CARGOS, cargo_PLST, 10) {
+	property {
+		number:						10;
+		type_name:					string(STR_CARGO_NAME_PLST);
+		unit_name: 					string(STR_CARGO_NAME_PLST);
+		units_of_cargo:				string(STR_CARGO_UNIT_PLST);
+		items_of_cargo:				string(STR_CARGO_UNIT_PLST);
+		type_abbreviation:			string(STR_CID_PLST);
+		sprite: 					4321;
+		is_freight:					1;
+		cargo_classes:				bitmask(CC_BULK);
+		cargo_label:				"PLST";
+		town_growth_effect:			TOWNGROWTH_NONE;
+		capacity_multiplier:		1;
+	}
+}
+
+/* not yet implemented */
+disable_item(FEAT_CARGOS, 11);

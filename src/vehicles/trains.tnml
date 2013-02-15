@@ -1,0 +1,7 @@
+track, id, type, cargo_class
+item(FEAT_TRAINS, train_{{ id }}, {{ id }}) {
+	property {
+		{% if name %}name: string(STR_VEHICLE_TRAIN_{{ id }});{% endif %}
+		{% if refittable_cargo_classes %}refittable_cargo_classes: {{ refittable_cargo_classes }};{% endif %}
+	}
+}

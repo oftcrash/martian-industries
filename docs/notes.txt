@@ -1,0 +1,8 @@
+T2M Sprites
+-----------
+Trees - under Index 82
+Industries - 81
+
+ogfx trees - 1949-1999
+
+

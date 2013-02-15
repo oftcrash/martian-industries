@@ -1,0 +1,10 @@
+grf {
+	grfid: "KK\03\01";
+	name: string(STR_GRF_NAME);
+	desc: string(STR_GRF_DESCRIPTION);
+	version: 0;
+	min_compatible_version: 0;
+}
+
+/*	override the vehicles in Toyland to Mars Conversion or they double up when you try to modify them */
+engine_override("MeoT");
